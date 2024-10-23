@@ -11,6 +11,12 @@
 
     <artifactId>letool-demo-spring</artifactId>
 
+    <modules>
+        <module>spring-core</module>
+        <module>spring-redis</module>
+        <module>spring-mvc</module>
+    </modules>
+
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>

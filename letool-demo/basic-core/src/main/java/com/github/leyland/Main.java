@@ -310,7 +310,18 @@ public class Main {
 
     @Test
     public void Test18() {
+        String val = "JW";
+        if (!"JW".equals(val) || !"WC".equals(val) || !"IK".equals(val)) {
+            System.out.println("Hello World");
+        }
 
+        if (!("JW".equals(val) || "WC".equals(val) || "IK".equals(val))) {
+            System.out.println("Hello World");
+        }
+
+        if(!("JW".equals(val) && "WC".equals(val) && "IK".equals(val))) {
+            System.out.println("Hello World");
+        }
     }
 
     @Test
