@@ -22,18 +22,23 @@ public class ApplicationContextUtil {
         return name;
     }
 
-    public void setName(String name) {
+    /*public void setName(String name) {
         this.name = name;
+    }*/
+
+    public ApplicationContextUtil setName(String name) {
+        this.name = name;
+        return this;
     }
 
-    private static ApplicationContext applicationContext;
+    /*private static ApplicationContext applicationContext;
 
-    public /*static*/ void setApplicationContext(ApplicationContext context) {
+    public *//*static*//* void setApplicationContext(ApplicationContext context) {
         applicationContext = context;
     }
 
-    public /*static*/ ApplicationContext getApplicationContext() {
+    public *//*static*//* ApplicationContext getApplicationContext() {
         return applicationContext;
-    }
+    }*/
 
 }

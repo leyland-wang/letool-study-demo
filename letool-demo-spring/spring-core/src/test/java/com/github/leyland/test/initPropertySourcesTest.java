@@ -10,8 +10,10 @@ import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.util.Arrays;
-import java.util.Map;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.*;
 //import org.testng.annotations.Test;
 
 /**
@@ -223,6 +225,7 @@ public class initPropertySourcesTest {
     public void testStatic1(){
         ApplicationContext ac = new ClassPathXmlApplicationContext("spring-config-util.xml");
         System.out.println(ac.getBean("applicationContextUtil"));
+        System.out.println(ac.getBean("userTest"));
     }
 
 
@@ -272,5 +275,84 @@ public class initPropertySourcesTest {
         //而由于lookupMethodInC被设置为prototype，因此每一次都会获取新的对象
         System.out.println("lookupMethodInA：" + lookupMethodInA);
     }
+
+
+    @Test
+    public void test34() {
+        ApplicationContext ac = new ClassPathXmlApplicationContext("spring-config-test2.xml");
+        System.out.println(ac.getBean("userTest"));
+    }
+
+    @Test
+    public void test35() {
+        NumberFormat numberFormat = new DecimalFormat("##0.00");
+        BigDecimal bigDecimal = new BigDecimal("0");
+        String format = numberFormat.format(bigDecimal);
+        System.out.println(format);
+        String format1 = numberFormat.format(0);
+        System.out.println(format1);
+    }
+
+    @Test
+    public void test36() {
+        Calendar calc = Calendar.getInstance();
+        calc.setTime(new Date());
+        System.out.println(calc.get(Calendar.MONTH) + 1);
+        System.out.println(calc.get(Calendar.MONTH) + 1);
+
+    }
+
+    @Test
+    public void test37() {
+        Map<String, Object> map = new HashMap<>();
+        int bb = 2;
+        map.put("aa", 1);
+        map.put("bb", bb);
+        map.put("dou", 3.1415926);
+        System.out.println(map.get("aa").toString());
+        System.out.println(map.get("bb").toString());
+        System.out.println(map.get("dou").toString());
+    }
+
+    @Test
+    public void test38() {
+        Boolean bool = true;
+        Boolean bool2 = bool;
+        bool = false;
+        System.out.println(bool2);
+
+    }
+
+
+    @Test
+    public void test39() {
+        List<String> list = new ArrayList<>(Arrays.asList("a", "b", "c", "d"));
+
+        for (String s : list) {
+            System.out.println(s);
+        }
+
+        for (String s : list) {
+            if (s.equals("c")) {
+                list.remove(s); // 没有异常？？？
+//                break;
+            }
+        }
+    }
+
+    @Test
+    public void test40() {
+        List<String> list = new ArrayList<>(Arrays.asList("A", "B", "C", "D"));
+
+        list.forEach(System.out::println);
+
+        for (String element : list) {
+            if (element.equals("B")) {
+                list.remove(element); // 抛出 ConcurrentModificationException
+//                break;
+            }
+        }
+    }
+
 
 }

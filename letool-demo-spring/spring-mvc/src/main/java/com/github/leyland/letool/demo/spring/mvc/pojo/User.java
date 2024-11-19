@@ -15,12 +15,28 @@ public class User {
 
     private int age;
     private String name;
+    private Integer addressId;
 
     public User() {
     }
+
+    public User(int age, String name, Integer addressId) {
+        this.age = age;
+        this.name = name;
+        this.addressId = addressId;
+    }
+
     public User(int age, String name) {
         this.age = age;
         this.name = name;
+    }
+
+    public Integer getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(Integer addressId) {
+        this.addressId = addressId;
     }
 
     public int getAge() {
@@ -44,17 +60,27 @@ public class User {
         return "User{" +
                 "age=" + age +
                 ", name='" + name + '\'' +
+                ", addressId=" + addressId +
                 '}';
     }
 
     public static void main(String[] args) {
         User [] users = new User[]{
-                new User(111, "asdas"),
-                new User(222, "asdas")
+                new User(111, "asdas", 666),
+                new User(222, "asdas", 999)
         };
         for (User user : users) {
             System.out.println(user);
         }
+
+        int iage = users[0].getAge();
+        iage = 911;
+        Integer addressId = users[0].getAddressId();
+        addressId = 110;
+        System.out.println(users[0]);
+
+
+
 
         String value = "Hello ${name}! Today is ${day}";
         Map<String, String> placeholders = new HashMap<>();
