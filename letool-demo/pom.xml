@@ -21,6 +21,8 @@
         <module>base-fastjson</module>
         <module>basic-web</module>
         <module>test-mvc</module>
+        <module>RabbitMQ</module>
+        <module>rocketmq</module>
     </modules>
 
     <properties>
